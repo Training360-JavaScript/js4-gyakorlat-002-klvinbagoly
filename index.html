@@ -3,20 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta
-        http-equiv="X-UA-Compatible"
-        content="IE=edge"
-    >
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TestPage</title>
 </head>
 
 <body>
     <h1>1. feladat</h1>
-    <script type="module"> 
+    <script type="module">
         import { startFetch, getServerData } from './solutions/app1.js';
         // https://nettuts.hu/jms/js4-002/users?limit=5
 
@@ -31,11 +25,19 @@
         import { getUsers, getUserData } from './solutions/app2.js';
         // https://nettuts.hu/jms/js4-002/users?limit=5
 
+        getUsers('https://nettuts.hu/jms/js4-002/users?limit=5');
+        setTimeout(()=> {
+            console.log(`Test User data: `, getUserData())
+        },4000)
+
         window.getUsers = getUsers;
         window.getUserData = getUserData;
 
         import { getMovies, getMovieData } from './solutions/app3.js';
         // https://nettuts.hu/jms/js4-002/movies?limit=5
+
+        getMovies('https://nettuts.hu/jms/js4-002/movies?limit=5')
+        .then(data => console.log(data))
 
         window.getMovies = getMovies;
         window.getMovieData = getMovieData;
@@ -43,10 +45,20 @@
         import { getCustomers, getCustomerData } from './solutions/app4.js';
         // https://nettuts.hu/jms/js4-002/users?limit=5
 
+        getCustomers('https://nettuts.hu/jms/js4-002/users?limit=5');
+        setTimeout(()=>{
+            console.log('Customer data: ', getCustomerData())
+        },6000)
+
         window.getCustomers = getCustomers;
         window.getCustomerData = getCustomerData;
 
         import { getProducts, getProductData } from "./solutions/app5.js";
+
+        getProducts('https://nettuts.hu/jms/js4-002/products?limit=3');
+        setTimeout(()=>{
+            console.log('Products data: ', getProductData())
+        },7000)
 
         // Csak teszteléshez.
         window.getProducts = getProducts;
